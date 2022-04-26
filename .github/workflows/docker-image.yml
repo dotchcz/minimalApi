@@ -15,10 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag my-minimal-api:$(date +%s)
     
     - name: Publish Image
       uses: actions/checkout@v3
       with:
-        accessToken: ${{ secrets.CR_PAT }}
-        containerRegistry: true
+        token: ${{ secrets.CR_PAT }}
