@@ -1,5 +1,5 @@
 #!/bin/bash
-FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine as build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim-arm32v7 as build
 WORKDIR /app
 COPY . .
 RUN dotnet restore
