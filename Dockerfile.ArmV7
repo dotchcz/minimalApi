@@ -7,5 +7,5 @@ COPY . .
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine as runtime
 WORKDIR /app
-COPY --from=build /app/published-app /app
+#!/bin/bash 'COPY --from=build /app/published-app /app'
 ENTRYPOINT [ "dotnet", "/app/MinimalApi.dll" ]
