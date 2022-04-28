@@ -10,7 +10,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: minimal-api-image
+  IMAGE_NAME: minimal-api-image-armv7
 
 jobs:
   # Push image to GitHub Packages.
