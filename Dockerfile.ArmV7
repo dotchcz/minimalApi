@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0.4-bullseye-slim-arm32v7 as build
+FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim-arm32v7 as build
 WORKDIR /app
 # Copy csproj and download the dependencies listed in that file
 COPY *.csproj ./
@@ -11,7 +11,7 @@ RUN dotnet publish -c Release -o out -r linux-arm
 #RUN dotnet build -r linux-arm
 #run dotnet publish -c release -r linux-arm
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0.4-bullseye-slim-arm32v7 as runtime
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-bullseye-slim-arm32v7 as runtime
 WORKDIR /app
 COPY --from=build /app/published-app /app
 
