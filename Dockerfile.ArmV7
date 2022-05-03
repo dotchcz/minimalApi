@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim-arm32v7 as build
 WORKDIR /app
-COPY . .
-#RUN ["dotnet", "restore"]
+# Copy csproj and download the dependencies listed in that file
+COPY *.csproj ./
 RUN dotnet restore
 RUN dotnet build -r linux-arm
 #run dotnet publish -c release -r linux-arm
