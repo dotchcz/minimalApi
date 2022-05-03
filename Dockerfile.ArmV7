@@ -4,7 +4,8 @@ WORKDIR /app
 COPY . .
 #RUN ["dotnet", "restore"]
 #RUN dotnet restore
-RUN ["dotnet", "build"]
+#RUN ["dotnet", "build"]
+dotnet build
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-bullseye-slim-arm32v7 as runtime
 WORKDIR /app
