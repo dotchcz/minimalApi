@@ -4,7 +4,6 @@ COPY . .
 #RUN ["dotnet", "restore"]
 RUN dotnet restore
 RUN dotnet build -r linux-arm
-#RUN ["dotnet", "build"]
 #run dotnet publish -c release -r linux-arm
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-bullseye-slim-arm32v7 as runtime
