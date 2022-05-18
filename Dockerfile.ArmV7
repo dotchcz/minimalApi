@@ -6,7 +6,7 @@ RUN dotnet restore MinimalApi.csproj
 
 # Copy all files in the project folder
 COPY . ./
-RUN dotnet publish -c Release -o out -r linux-arm
+RUN dotnet publish -c Release -o /app/published-app -r linux-arm
 
 #RUN dotnet build -r linux-arm
 #run dotnet publish -c release -r linux-arm
