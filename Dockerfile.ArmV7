@@ -1,11 +1,18 @@
-#!/bin/bash
 FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim-arm32v7 as build
 WORKDIR /app
-COPY . .
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
+# Copy csproj and download the dependencies listed in that file
+COPY *.csproj ./
+RUN dotnet restore MinimalApi.csproj
+
+# Copy all files in the project folder
+COPY . ./
+RUN dotnet publish -c Release -o out -r linux-arm
+
+#RUN dotnet build -r linux-arm
+#run dotnet publish -c release -r linux-arm
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-bullseye-slim-arm32v7 as runtime
 WORKDIR /app
 COPY --from=build /app/published-app /app
+
 ENTRYPOINT [ "dotnet", "/app/MinimalApi.dll" ]
