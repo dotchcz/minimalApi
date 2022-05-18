@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0-bullseye-slim-arm32v7 as build
 WORKDIR /app
 # Copy csproj and download the dependencies listed in that file
-COPY *.csproj ./
+COPY ["MinimalApi.csproj", ""]
 RUN dotnet restore "./MinimalApi.csproj"
 
 # Copy all files in the project folder
